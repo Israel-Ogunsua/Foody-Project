@@ -8,7 +8,8 @@
 {%block content%}
     <div>
 
-        <form methods= "POST" >
+        <form methods= "post" >
+            {{ form.csrf_token }}
 
             {{form.username.label}}
             {% if form.username.errors%}
@@ -21,21 +22,6 @@
             </p>
             {%else%}
                 {{ form.username(class= "form")}}
-            {%endif%}
-
-            <br>
-
-            {{form.email.label}}
-            {% if form.email.errors%}
-            <p>
-                {%for error in form.email.errors %}
-                    <span>
-                        {{error}}
-                    </span>
-                {%endfor%}
-            </p>
-            {%else%}
-                {{ form.email(class= "form")}}
             {%endif%}
 
             <br>

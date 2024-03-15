@@ -6,72 +6,71 @@
 
    
 {%block content%}
+
     <div>
-        <form methods= "POST" >
+        <form methods= "post" >
+            {{ form.csrf_token }}
 
             {{form.username.label}}
-            {% if form.username.errors%}
-                <p>
-                    {%for error in form.username.errors %}
-                        <span>
-                            {{error}}
-                        </span>
-                    {%endfor%}
-                </p>
-            {%else%}
-                {{ form.username(class= "form")}}
-            {%endif%}
-
+                {% if form.username.errors%}
+                    {{form.username()}}
+                    <p>
+                        {%for error in form.username.errors %}
+                            <span>
+                                {{error}}
+                            </span>
+                        {%endfor%}
+                    </p>
+                {% else %}
+                    {{form.username()}}
+                {%endif %}
             <br>
-
             {{form.email.label}}
-            {% if form.email.errors%}
-                <p>
-                    {%for error in form.email.errors %}
-                        <span>
-                            {{error}}
-                        </span>
-                    {%endfor%}
-                </p>
-            {%else%}
-                {{ form.email(class= "form")}}
-            {%endif%}
-
+                {% if form.email.errors%}
+                    {{form.email()}}
+                    <p>
+                        {%for error in form.email.errors %}
+                            <span>
+                                {{error}}
+                            </span>
+                        {%endfor%}
+                    </p>
+                {% else %}
+                    {{form.email()}}
+                {%endif %}
             <br>
-
             {{form.password.label}}
-            {% if form.password.errors%}
-                <p>
-                    {%for error in form.password.errors %}
-                        <span>
-                            {{error}}
-                        </span>
-                    {%endfor%}
-                </p>
-            {%else%}
-                {{ form.password(class= "form")}}
-            {%endif%}
-
+                {% if form.password.errors%}
+                    {{form.password()}}
+                    <p>
+                        {%for error in form.password.errors %}
+                            <span>
+                                {{error}}
+                            </span>
+                        {%endfor%}
+                    </p>
+                {% else %}
+                    {{form.password()}}
+                {%endif %}
             <br>
-
             {{form.repassword.label}}
-            {% if form.repassword.errors%}
-                <p>
-                    {%for error in form.repassword.errors %}
-                        <span>
-                            {{error}}
-                        </span>
-                    {%endfor%}
-                </p>
-            {%else%}
-                {{ form.repassword()}}
-            {%endif%}
-
+                {% if form.repassword.errors%}
+                    {{form.repassword()}}
+                    <p>
+                        {%for error in form.repassword.errors %}
+                            <span>
+                                {{error}}
+                            </span>
+                        {%endfor%}
+                    </p>
+                {% else %}
+                    {{form.repassword()}}
+                {%endif %}
             <br>
-
+            
             {{form.submit()}}
-
 
         </form>
     </div>
+
 {%endblock%}

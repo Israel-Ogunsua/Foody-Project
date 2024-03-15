@@ -13,12 +13,26 @@
 
     <!-- Navigation -->
     <nav class="w3-bar w3-black">
-        <a href="{{ url_for('home')}}" class="w3-button w3-bar-item">Home</a>
-        <a href="{{ url_for('login')}}" class="w3-button w3-bar-item">Login</a>
-        <a href="{{ url_for('register')}}" class="w3-button w3-bar-item">Register</a>
-        <a href="{{ url_for('account')}}" class="w3-button w3-bar-item">Account</a>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('home')}}" class="w3-button w3-bar-item">Home</a>
+            <a href="{{ url_for('account')}}" class="w3-button w3-bar-item">Account</a>
+            <a href="{{ url_for('logout')}}" class="w3-button w3-bar-item">Logout</a>
+        {%else%}
+            <a href="{{ url_for('home')}}" class="w3-button w3-bar-item">Home</a>
+            <a href="{{ url_for('login')}}" class="w3-button w3-bar-item">Login</a>
+            <a href="{{ url_for('register')}}" class="w3-button w3-bar-item">Register</a>
+        {%endif%}
     </nav>
 
+
+{% with messages = get_flashed_messages(with_categories= true) %}
+    {% if messages %}
+        {% for categoty, message in messages %}
+            <p style="justify-content: center;
+            align-content: center; display: flex; color:green; ">{{ message }}</p>
+        {%endfor%}
+    {% endif%}
+{%endwith%}
 
 
 
